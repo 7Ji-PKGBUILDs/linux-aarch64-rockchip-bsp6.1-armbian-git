@@ -4,7 +4,7 @@
 
 pkgbase=linux-aarch64-rockchip-bsp6.1-armbian-git
 pkgname=("${pkgbase}"{,-headers})
-pkgver=6.1.99
+pkgver=6.1.99.r1277473.72269e53
 pkgrel=1
 arch=('aarch64')
 license=('GPL2')
@@ -17,14 +17,16 @@ _config='linux-rk35xx-vendor'
 source=(
   "git+${url}/${_srcname}.git#branch=rk-6.1-rkr5"
   "https://raw.githubusercontent.com/armbian/build/main/config/kernel/${_config}.config"
-  'localversion.config'
+  'local.config'
+  "001-intel_be200.patch::https://patch-diff.githubusercontent.com/raw/Joshua-Riek/linux-rockchip/pull/34.patch"
+  "002-gpu_pll_tune.patch::https://github.com/hbiyik/linux/commit/e4fd428dd34fe13cbd5fa6ed79e2f787bc7655b0.patch"
 )
 
-sha512sums=(
-  'SKIP'
-  'SKIP'
-  '9ec050e491788b8428395fc28b6d8486d64d314d8b85e97d8df30a35bd7b85d2ed84682e7b2eaed7b471b73aa51119e360761a099719eed9952713e0caba17ce'
-)
+sha512sums=('SKIP'
+            '6f5cafe346bf4eed533a6647929d27cd9306095f37f4701d3476cd2d69b85c1b3835de80788dc659920bd534eab22f6a5e818c5ca59fd71716cb893cbce35e57'
+            '286f7e585eff92da3562d90b0c8a568df9aa67074697cd05c425f7e5bc267e09f28d0a139037cb4c34c27d3ddf8388e6d7b9311f7129a788f4685db7daf7f687'
+            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276'
+            'd51e8f2bf18d2b2f2e6c593cb9edf78e8ab2bbcc539b7af958fd4b926ba0d74943d31849420f5a3633d756f2c671821dd2794639f82415dfeb48e69a2e42849c')
 
 pkgver() {
   cd "${_srcname}"
@@ -51,8 +53,13 @@ prepare() {
     patch -p1 -N -i $p || true
   done
 
+  for p in $srcdir/*.patch; do
+    echo "Custom Patching with ${p}"
+    patch -p1 -N -i $p
+  done
+
   echo "Preparing config..."
-  scripts/kconfig/merge_config.sh -m ../${_config}.config ../localversion.config
+  scripts/kconfig/merge_config.sh -m ../${_config}.config ../local.config
 }
 
 build() {
