@@ -47,10 +47,9 @@ prepare() {
   echo "-rockchip" > localversion.10-pkgname
   #echo "-r$(git rev-list --count HEAD)" > localversion.20-revision
 
-  # this is only for local builds so there is no need to integrity check. (if needed)
   for p in $srcdir/*.patch; do
-    echo "Custom Patching with ${p}"
-    patch -p1 -N -i $p || true
+    echo "Patching with ${p}"
+    patch -p1 -N -i $p
   done
 
   echo "Preparing config..."
