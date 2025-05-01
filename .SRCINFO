@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-rockchip-bsp6.1-armbian-git
-	pkgver = 6.1.99
+	pkgver = 6.1.115
 	pkgrel = 1
 	url = https://github.com/armbian
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = linux-aarch64-rockchip-bsp6.1-armbian-git
 	makedepends = pahole
 	makedepends = python
 	options = !strip
-	source = git+https://github.com/armbian/linux-rockchip.git#branch=rk-6.1-rkr5
+	source = git+https://github.com/armbian/linux-rockchip.git#branch=rk-6.1-rkr5.1
     source = https://raw.githubusercontent.com/armbian/build/main/config/kernel/linux-rk35xx-vendor.config
 	source = localversion.config
 	sha512sums = SKIP
