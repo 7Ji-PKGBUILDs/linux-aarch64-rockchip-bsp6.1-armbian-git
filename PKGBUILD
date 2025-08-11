@@ -19,14 +19,12 @@ source=(
   "https://raw.githubusercontent.com/armbian/build/main/config/kernel/${_config}.config"
   'local.config'
   "001-intel_be200.patch::https://patch-diff.githubusercontent.com/raw/Joshua-Riek/linux-rockchip/pull/34.patch"
-  "002-gpu_pll_tune.patch::https://github.com/hbiyik/linux/commit/e4fd428dd34fe13cbd5fa6ed79e2f787bc7655b0.patch"
 )
 
 sha512sums=('SKIP'
             '6f5cafe346bf4eed533a6647929d27cd9306095f37f4701d3476cd2d69b85c1b3835de80788dc659920bd534eab22f6a5e818c5ca59fd71716cb893cbce35e57'
             '286f7e585eff92da3562d90b0c8a568df9aa67074697cd05c425f7e5bc267e09f28d0a139037cb4c34c27d3ddf8388e6d7b9311f7129a788f4685db7daf7f687'
-            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276'
-            'SKIP')
+            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276')
 
 pkgver() {
   cd "${_srcname}"
