@@ -4,7 +4,7 @@
 
 pkgbase=linux-aarch64-rockchip-bsp6.1-armbian-git
 pkgname=("${pkgbase}"{,-headers})
-pkgver=6.1.115.r1280541.b2c0f001
+pkgver=6.1.118.r1281724.d8e42edc
 pkgrel=1
 arch=('aarch64')
 license=('GPL2')
@@ -15,16 +15,18 @@ options=('!strip')
 _srcname='linux-rockchip'
 _config='linux-rk35xx-vendor'
 source=(
-  "git+${url}/${_srcname}.git#branch=rk-6.1-rkr5.1"
+  "git+${url}/${_srcname}.git#branch=rk-6.1-rkr6.1"
   "https://raw.githubusercontent.com/armbian/build/main/config/kernel/${_config}.config"
   'local.config'
   "001-intel_be200.patch::https://patch-diff.githubusercontent.com/raw/Joshua-Riek/linux-rockchip/pull/34.patch"
+  "002-armbian.patch::https://github.com/hbiyik/linux/compare/d8e42edcd660498d2361dd77503cf1165579df04...rk-6.1-rkr6.1.patch"
 )
 
 sha512sums=('SKIP'
             'SKIP'
-            '286f7e585eff92da3562d90b0c8a568df9aa67074697cd05c425f7e5bc267e09f28d0a139037cb4c34c27d3ddf8388e6d7b9311f7129a788f4685db7daf7f687'
-            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276')
+            'SKIP'
+            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276'
+            'SKIP')
 
 pkgver() {
   cd "${_srcname}"
