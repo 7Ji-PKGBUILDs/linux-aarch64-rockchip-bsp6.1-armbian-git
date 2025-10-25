@@ -19,14 +19,12 @@ source=(
   "https://raw.githubusercontent.com/armbian/build/main/config/kernel/${_config}.config"
   'local.config'
   "001-intel_be200.patch::https://patch-diff.githubusercontent.com/raw/Joshua-Riek/linux-rockchip/pull/34.patch"
-  "002-armbian.patch::https://github.com/hbiyik/linux/compare/d8e42edcd660498d2361dd77503cf1165579df04...rk-6.1-rkr6.1.patch"
 )
 
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276'
-            'SKIP')
+            '3670998a0fe640113fa04bc4e24682812343ed997457885711ba583ba7c534b02d2ea0634b7dc282ba525c9b1722df7b3cd29464a749227120b678e5dcb67276')
 
 pkgver() {
   cd "${_srcname}"
