@@ -15,7 +15,7 @@ options=('!strip')
 _srcname='linux-rockchip'
 _config='linux-rk35xx-vendor'
 source=(
-  "git+${url}/${_srcname}.git#branch=rk-6.1-rkr6.1"
+  "git+${url}/${_srcname}.git#branch=rk-6.1-rkr5.1"
   "https://raw.githubusercontent.com/armbian/build/main/config/kernel/${_config}.config"
   'local.config'
   "001-intel_be200.patch::https://patch-diff.githubusercontent.com/raw/Joshua-Riek/linux-rockchip/pull/34.patch"
